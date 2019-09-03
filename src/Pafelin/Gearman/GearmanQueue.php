@@ -58,6 +58,7 @@ class GearmanQueue extends Queue implements QueueInterface
             $queue = $this->queue;
         }
         $payload = $this->createPayload($job, $data);
+        $payload = $this->createPayload($job, $queue, $data);
 
         $this->doBackgroundAndHandleException($queue, $payload);
 

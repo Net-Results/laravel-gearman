@@ -54,10 +54,9 @@ class GearmanQueue extends Queue implements QueueInterface
      */
     public function push($job, $data = '', $queue = null)
     {
-        if(!$queue) {
+        if (!$queue) {
             $queue = $this->queue;
         }
-        $payload = $this->createPayload($job, $data);
         $payload = $this->createPayload($job, $queue, $data);
 
         $this->doBackgroundAndHandleException($queue, $payload);
